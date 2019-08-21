@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">ContactList</string>
+    <string-array name="lists">
+        <item>Gunjan Bansal</item>
+        <item>Pooja Bansal</item>
+        <item>Abhinav Bansal</item>
+        <item>Sarayna G</item>
+        <item>Shilpa V</item>
+        <item>Sahar</item>
+    </string-array>
+</resources>
