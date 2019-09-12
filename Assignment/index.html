@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Flamenco&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Assignment</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="row clearfix">
+                <img src="logo.jpg" alt="" class="logo">
+            <ul class="main-nav animated slideInDown"  id="check-class" >
+                    <li>
+                        <a href="">
+                      Home  
+                    </a>
+                    </li>
+                    <li>
+                        <a href="#aboutus">
+                        About Us  
+                    </a>
+                      </li>
+                      <li>
+                        <a href="#contact">
+                        Contact Us
+                    </a>
+                      </li>
+            </ul>
+            <a href="#" class="mobile-icon"onclick="slideShow()">
+                    <i class="fa fa-bars" ></i>
+            </a>
+        </div>
+        </nav>
+        <div class="main-content-header">
+        <h1>
+            Welcome To My <span class="color-change">Internship Assignment</span>
+        </h1>
+            <a href="" class="btn btn-signup">Signup</a>
+            <a href="" class="btn btn-login">Login</a>
+        </div>
+        </header>
+        <hr>
+
+        <div id="aboutus">
+            <h1>
+                About US
+            </h1>
+       <div>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. <br>
+                Aspernatur pariatur temporibus quos, animi aliquid repellat nostrum velit odio repudiandae, enim possimus voluptatibus dignissimos. <br>
+                Nihil minus, dolorem voluptatem omnis culpa accusamus.
+            </div>
+            </div>
+            <hr>
+            <div id="contact">
+                    <h1>
+                        Contact US
+                    </h1>
+               <div>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. <br>
+                        Aspernatur pariatur temporibus quos, animi aliquid repellat nostrum velit odio repudiandae, enim possimus voluptatibus dignissimos. <br>
+                        Nihil minus, dolorem voluptatem omnis culpa accusamus.
+                    </div>
+                    </div>
+             
+            <footer class="footer-class">
+                <i class="fa fa-copyright" aria-hidden="true"></i> <span>2019 Gunjan Bansal</span>
+            </footer>
+<script>
+function slideShow()
+{
+    var x =document.getElementById('check-class');
+    if(x.style.display==="none")
+    {
+        x.style.display="block";
+    }
+    else
+    {
+        x.style.display="none";
+    }
+
+}
+</script>
+    </body>
+        
+</html>
