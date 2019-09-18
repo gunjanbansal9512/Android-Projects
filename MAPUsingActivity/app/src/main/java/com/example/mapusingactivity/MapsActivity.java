@@ -1,7 +1,16 @@
 package com.example.mapusingactivity;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -9,6 +18,8 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+
+import java.util.List;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
@@ -22,6 +33,57 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+        LocationManager lm = (LocationManager) getSystemService(LOCATION_SERVICE);
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
+        }
+        if (lm.isProviderEnabled(LocationManager.NETWORK_PROVIDER)) {
+            lm.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, new LocationListener() {
+                @Override
+                public void onLocationChanged(Location location) {
+                    if(location!=null)
+                    {
+                        double lat=location.getLatitude();
+                        double longitude=location.getLongitude();
+                        LatLng latLng=new LatLng(lat,longitude);
+                        Geocoder geocoder = new Geocoder(getApplicationContext());
+                        try{
+                            List<Address>address = geocoder.getFromLocation(lat,longitude,1);
+                            String str=address.get(0).getCountryName()+","+address.get(0).getLocality()+","+address.get(0).getPostalCode();
+                            Toast.makeText(MapsActivity.this, str, Toast.LENGTH_SHORT).show();
+
+                            mMap.addMarker(new MarkerOptions().position(latLng).title(str));
+                            mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+                        }
+                        catch (Exception e)
+                        {
+                            Toast.makeText(MapsActivity.this,"Exception", Toast.LENGTH_SHORT).show();
+                        }
+
+                    }
+                }
+
+                @Override
+                public void onStatusChanged(String s, int i, Bundle bundle) {
+
+                }
+
+                @Override
+                public void onProviderEnabled(String s) {
+
+                }
+
+                @Override
+                public void onProviderDisabled(String s) {
+
+                }
+            });
+            //LatLng bangalore = new LatLng(12.9716, 77.5946);
+        }
+        else
+        {
+            Toast.makeText(MapsActivity.this,"Enable gps",Toast.LENGTH_LONG).show();
+        }
     }
 
 
@@ -38,9 +100,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        }
     }
-}
+
+
