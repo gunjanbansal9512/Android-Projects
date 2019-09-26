@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
@@ -19,10 +20,13 @@ private ViewPager myViewPager;
 private TabLayout myTabLayout;
 private TabsAccessAdapter myTabsAccessAdapter;
 private FirebaseUser currentUser;
+private FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mAuth=FirebaseAuth.getInstance();
+        currentUser=mAuth.getCurrentUser();
         mToolBar=(Toolbar)findViewById(R.id.main_page_toolbar);
         setSupportActionBar(mToolBar);
         getSupportActionBar().setTitle("WhatsApp");
