@@ -18,20 +18,22 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
  public class LoginActivity extends AppCompatActivity {
-     private FirebaseUser currentUser;
      private FirebaseAuth mAuth;
      private Button LoginButton,PhoneLoginButton;
      private EditText UserEmail,UserPassword;
      private TextView NeedNewAccount,ForgetPassword;
     private ProgressDialog progressDialog;
+
      @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         mAuth = FirebaseAuth.getInstance();
-        currentUser=mAuth.getCurrentUser();
+
         initializeFields();
          NeedNewAccount.setOnClickListener(new View.OnClickListener() {
              @Override
@@ -99,18 +101,13 @@ import com.google.firebase.auth.FirebaseUser;
 
 
      }
-    @Override
-protected void onStart()
-{
-    super.onStart();
-if(currentUser != null)
-{
-    sendUserMainActivity();
-}
-}
+
 
      private void sendUserMainActivity() {
-         Intent loginIntent = new Intent(LoginActivity.this,MainActivity.class);
-         startActivity(loginIntent);
-    }
+         Intent i = new Intent(LoginActivity.this,MainActivity.class);
+         i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK| Intent.FLAG_ACTIVITY_CLEAR_TASK);
+         startActivity(i);
+         finish();
+
+     }
  }
