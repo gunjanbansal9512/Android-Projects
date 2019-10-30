@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+<EditText
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/textEnter"
+    android:layout_marginTop="15dp"
+    android:layout_marginStart="10dp"></EditText>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textEnter"
+        android:id="@+id/submit"
+        android:text="Write Data"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="20dp"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/submit"
+        android:id="@+id/Read"
+        android:text="Read Data"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="20dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/readText"
+        android:layout_marginTop="15dp"
+        android:layout_below="@+id/Read"
+        android:layout_marginStart="10dp"
+        android:hint="Text Will Display Here"></TextView>
+
+</RelativeLayout>
