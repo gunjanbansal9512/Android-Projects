@@ -49,6 +49,13 @@ import com.google.firebase.database.FirebaseDatabase;
                  AllowUserToLogin();
              }
          });
+         PhoneLoginButton.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View view) {
+                 Intent i = new Intent(LoginActivity.this,PhoneLogin.class);
+                 startActivity(i);
+             }
+         });
     }
 
      private void AllowUserToLogin() {
