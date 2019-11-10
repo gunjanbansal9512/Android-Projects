@@ -133,4 +133,12 @@ private DatabaseReference RootRef;
             }
         });
     }
+    @Override
+    public void onBackPressed() {
+        Intent i = new Intent(SettingsActivity.this,MainActivity.class);
+        i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK| Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(i);
+        finish();
+
+    }
 }

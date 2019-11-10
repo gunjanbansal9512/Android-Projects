@@ -126,12 +126,18 @@ private DatabaseReference RootRef;
         }
         if(item.getItemId()==R.id.main_find_friends_option)
         {
-
+sendUserToFindFriends();
         }
         return true;
     }
 
+    private void sendUserToFindFriends() {
+    Intent friendActivity= new Intent(MainActivity.this,FindFriends.class);
+      //  friendActivity.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK| Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(friendActivity);
+        //finish();
 
+    }
 
 
     private void SendUserToSettingActivity() {
