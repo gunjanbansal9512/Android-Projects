@@ -44,7 +44,8 @@
             android:layout_marginTop="20dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="3dp"
-            android:src="@drawable/send_message">
+            android:src="@drawable/send_message"
+            android:background="@android:color/darker_gray">
 
         </ImageButton>
     </LinearLayout>
