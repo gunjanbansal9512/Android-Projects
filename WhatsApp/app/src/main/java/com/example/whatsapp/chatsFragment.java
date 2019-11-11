@@ -1,6 +1,7 @@
 package com.example.whatsapp;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -59,10 +60,22 @@ private String currentUserId;
         userRef.child(user_ids).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    final String userIdName =dataSnapshot.child("name").getValue().toString();
-                final String userIdStatus =dataSnapshot.child("status").getValue().toString();
-            holder.u_name.setText(userIdName);
-            holder.u_status.setText("Last seen \n");
+                  if(dataSnapshot.exists())
+                  {
+                      final String userIdName =dataSnapshot.child("name").getValue().toString();
+                      final String userIdStatus =dataSnapshot.child("status").getValue().toString();
+                      holder.u_name.setText(userIdName);
+                      holder.u_status.setText("Last seen \n");
+                      holder.itemView.setOnClickListener(new View.OnClickListener() {
+                          @Override
+                          public void onClick(View view) {
+                              Intent chatIntent =new Intent(getContext(),ChatActivity.class);
+                              chatIntent.putExtra("visit_user_id",user_ids);
+                              chatIntent.putExtra("visit_user_name",userIdName);
+                              startActivity(chatIntent);
+                          }
+                      });
+                  }
 
             }
 

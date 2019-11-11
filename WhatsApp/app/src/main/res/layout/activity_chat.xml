@@ -14,7 +14,7 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/messages_list_of_users"
         android:layout_width="match_parent"
-        android:layout_height="600dp"
+        android:layout_height="500dp"
         android:layout_below="@+id/chat_toolbar"
         >
 
@@ -29,19 +29,22 @@
         android:background="@android:color/background_light"
         android:orientation="horizontal"
         >
+
         <EditText
             android:id="@+id/input_message"
-            android:layout_width="320dp"
-            android:layout_height="wrap_content"
+            android:layout_width="300dp"
+            android:layout_height="71dp"
+            android:layout_marginTop="10dp"
             android:hint="Enter the message..."
-            android:padding="15dp"
-            />
+            android:padding="15dp" />
+
         <ImageButton
-            android:layout_width="60dp"
+            android:id="@+id/send_message_button"
+            android:layout_width="40dp"
+            android:layout_marginTop="20dp"
             android:layout_height="wrap_content"
-            android:src="@drawable/send_message"
-            android:layout_marginStart="20dp"
-            android:id="@+id/send_message_button">
+            android:layout_marginStart="3dp"
+            android:src="@drawable/send_message">
 
         </ImageButton>
     </LinearLayout>
